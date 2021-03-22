@@ -5,7 +5,11 @@ LABEL author="yeonkim@student.42seoul.kr"
 # 작성자
 
 RUN apt-get update
-RUN apt-get install -y	nginx
+RUN apt-get install -y	nginx \
+						php-fpm \
+						openssl
+
+# COPY /srcs/nginx/sites-available/default ./etc/nginx/sites-available/default
 
 RUN service nginx start
 
