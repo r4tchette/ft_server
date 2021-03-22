@@ -1,24 +1,22 @@
 FROM debian:buster
-# debian buster 설치
 
 LABEL author="yeonkim@student.42seoul.kr"
-# 작성자
 
 RUN apt-get update
 RUN apt-get install -y	nginx \
 						php-fpm \
-						openssl
+						vim \
+						openssl \
+						mariadb-server \
+						php-mysql
 
-# COPY /srcs/nginx/sites-available/default ./etc/nginx/sites-available/default
+COPY ./srcs/default ./etc/nginx/sites-available/
+COPY ./srcs/phpMyAdmin-5.0.2-all-languages.tar.gz ./
+COPY ./srcs/config.inc.php ./
+COPY ./srcs/latest.tar.gz ./
+COPY ./srcs/wp-config.php ./
+COPY ./srcs/run.sh ./
 
-RUN service nginx start
+EXPOSE 80 443
 
-WORKDIR /etc/nginx
-# CMD 명령어가 실행될 경로로 이동
-
-CMD ["nginx", "-g", "daemon off;"]
-# nginx를 백그라운드로 실행
-
-EXPOSE 80
-
-RUN bash
+CMD bash run.sh
