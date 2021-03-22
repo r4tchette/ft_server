@@ -14,8 +14,8 @@ mv config.inc.php /var/www/html/phpmyadmin/
 service mysql start
 mysql -u root --skip-password < var/www/html/phpmyadmin/sql/create_tables.sql
 echo "CREATE DATABASE IF NOT EXISTS wordpress;" | mysql -u root --skip-password
-echo "CREATE USER jehong@localhost IDENTIFIED by '1111';" | mysql -u root --skip-password
-echo "GRANT ALL PRIVILEGES ON *.* to jehong@localhost;" | mysql -u root --skip-password
+echo "CREATE USER yeonkim@localhost IDENTIFIED by 'yeonkim';" | mysql -u root --skip-password
+echo "GRANT ALL PRIVILEGES ON *.* to yeonkim@localhost;" | mysql -u root --skip-password
 
 # intall wordpress
 tar -xvf latest.tar.gz
