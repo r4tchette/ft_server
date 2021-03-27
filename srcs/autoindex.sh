@@ -6,10 +6,12 @@ if [ "$#" -lt 1 ]; then
 	exit 1
 fi
 
-if [ "$1" -!eq 1]; then
+if [ "$1" -eq 1 ]; then
 	cp ./default_autoindex_on ./etc/nginx/sites-available/default
-elif [ "$1" -eq 0]; then
+	echo "Autoindex: on"
+elif [ "$1" -eq 0 ]; then
 	cp ./default_autoindex_off ./etc/nginx/sites-available/default
+	echo "autoindex: off"
 else
 	echo "Usage : $0 [0 or 1]"
 fi
